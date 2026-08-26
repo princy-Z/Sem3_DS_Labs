@@ -1,0 +1,34 @@
+//4. WAP to find the largest among the given three numbers by user. 
+#include<stdio.h>
+
+void main()
+{
+    int a,b,c;
+
+    printf("Enter three numbers:");
+    scanf("%d %d %d",&a,&b,&c);
+
+    if (a>b)
+    {
+        if (a>c)
+        {
+            printf("%d is largest number...",a);
+        }
+        else
+        {
+            printf("%d is largest number...",c);
+        }
+    }
+    else
+    {
+        if (b>c)
+        {
+            printf("%d is largest number...",b);
+        }
+        else
+        {
+            printf("%d is largest number...",c);
+        }
+    }
+
+}
