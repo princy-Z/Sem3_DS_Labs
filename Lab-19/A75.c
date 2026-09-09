@@ -137,11 +137,11 @@ void preorder(struct Node *root)
 
     if (root->lptr != NULL)
     {
-        inorder(root->lptr);
+        preorder(root->lptr);
     }
     if(root->rptr != NULL)
     {
-        inorder(root->rptr);
+        preorder(root->rptr);
     }
 }
 
@@ -154,11 +154,11 @@ void postorder(struct Node *root)
     }
     if (root->lptr != NULL)
     {
-        inorder(root->lptr);
+        postorder(root->lptr);
     }
     if(root->rptr != NULL)
     {
-        inorder(root->rptr);
+        postorder(root->rptr);
     }
     printf("%d ",root->Info);
 }

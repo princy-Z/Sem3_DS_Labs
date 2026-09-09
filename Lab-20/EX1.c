@@ -104,5 +104,4 @@ void main()
 
     int level = get_Level(root,4);
     printf("%d",level);
-
 }
