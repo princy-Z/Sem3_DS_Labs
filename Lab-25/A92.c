@@ -25,7 +25,7 @@ void main()
                 minIndex = j;
             }
         }  
-        if (minIndex != i)
+        if (i != minIndex)
         {
             int temp = arr[i];
             arr[i] = arr[minIndex];
