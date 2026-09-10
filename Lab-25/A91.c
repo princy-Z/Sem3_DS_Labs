@@ -6,7 +6,7 @@ void main()
     printf("Enter size of array:");
     scanf("%d",&n);
 
-    int arr[n];
+    int arr[n], last = n-1;
 
     for (int i = 0; i < n; i++)
     {
@@ -15,17 +15,29 @@ void main()
     }
 
     //Bubble Sort
-    for (int j = 0; j < n-1; j++)
+    for (int i = 0; i <= last; i++)
     {
-        if (arr[j] > arr[j+1])
+        int Exchange = 0;
+
+        for (int j = 0; j < last; j++)
         {
-            int temp = arr[j];
-            arr[j] = arr[j+1];
-            arr[j+1] = temp;
+            if (arr[j] > arr[j+1])
+            {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                Exchange++;
+            }
         }
+
+        if (Exchange == 0)
+            printf("Array is sorted...");
+            break;
+
+        last--;
     }
 
     for (int i = 0; i < n; i++)
-        printf("%d",arr[i]);
+        printf("%d ",arr[i]);
 
 }
