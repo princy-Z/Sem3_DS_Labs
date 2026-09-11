@@ -50,17 +50,19 @@ struct Node *MinValue(struct Node *root)
 
 struct Node *Search(struct Node *root,int x)
 {
-    if (root == NULL || root->Info == x)
+    if (root == NULL)
+    {
+        return NULL;
+    }
+    if (root->Info == x)
     {
         return root;
-    }
-
-    if (x < root->Info)
+    }else if (x < root->Info)
     {
         return Search(root->lptr,x);
+    }else{
+        return Search(root->rptr,x); 
     }
-
-    return Search(root->rptr,x); 
 }
 
 struct Node *Delete(struct Node *root,int x)
@@ -68,7 +70,7 @@ struct Node *Delete(struct Node *root,int x)
     if (Search(root,x) == NULL)
     {
         printf("%d not found in tree...\n",x);
-        return root;
+        return NULL;
     }
     
     if (root == NULL)
@@ -165,31 +167,58 @@ void postorder(struct Node *root)
 
 void main()
 {
+    int choice,x;
     struct Node *root = NULL,*found;
 
-    root = Insert(root,2);
-    root = Insert(root,3);
-    root = Insert(root,10);
-    root = Insert(root,40);
-    root = Insert(root,1);
+    do
+    {
+        printf("\n---------------------------------------------------------------\n");
+        printf("1.Insert a node\n2.Delete a node\n3.Search a node\n4.Preorder Traversal\n");
+        printf("5.Postorder Traversal\n6.Inorder Traversal\n");
+        printf("Enter your choice:");
+        scanf("%d",&choice);
 
-    inorder(root);
-    printf("\n");
+        switch (choice)
+        {
+        case 1:
+            printf("Enter a number to insert:");
+            scanf("%d",&x);
+            root = Insert(root,x);
+            break;
+        
+        case 2:
+            printf("Enter a number to delete:");
+            scanf("%d",&x);
+            root = Delete(root,x);
+            break;
 
-    root = Delete(root,10);
+        case 3:
+            printf("Enter a nuber to search in tree:");
+            scanf("%d",&x);
+            found = Search(root,x);
+            if (found == NULL)
+                printf("%d is not found...",x);
+            else
+                printf("%d is found...",found->Info);
+            break;
 
-    inorder(root);
-    printf("\n");
+        case 4:
+            preorder(root);
+            break;
 
-    preorder(root);
-    printf("\n");
-    postorder(root);
-    printf("\n");
+        case 5:
+            postorder(root);
+            break;
 
-    found = Search(root,10);
+        case 6:
+            inorder(root);
+            break;
 
-    if (found == NULL)
-        printf("%d is not found...",found->Info);
-    else
-        printf("%d is found...",found->Info);
+        default:
+            printf("Invalide choice...Try Again...!\n");
+            break;
+        }
+
+    } while (choice <= 6);
+    
 }
